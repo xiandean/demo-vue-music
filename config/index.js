@@ -10,7 +10,35 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/lyric/fcgi-bin': {
+        target: 'https://c.y.qq.com',
+        secure: false,
+        changeOrigin: true,
+        headers: {
+          referer: 'https://c.y.qq.com',
+          host: 'c.y.qq.com'
+        }
+      },
+      '/splcloud/fcgi-bin/': {
+        target: 'https://c.y.qq.com',
+        secure: false,
+        changeOrigin: true,
+        headers: {
+          referer: 'https://c.y.qq.com',
+          host: 'c.y.qq.com'
+        }
+      },
+      '/qzone/fcg-bin/': {
+        target: 'https://c.y.qq.com',
+        secure: false,
+        changeOrigin: true,
+        headers: {
+          referer: 'https://y.qq.com/n/yqq/playlist/3628588844.html',
+          host: 'c.y.qq.com'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -55,7 +83,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

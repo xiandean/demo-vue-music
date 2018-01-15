@@ -1,23 +1,31 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div id="app" @touchstart.once="audioInit">
+    <m-header></m-header>
+    <tab></tab>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <player ref="player"></player>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
-</script>
+  import MHeader from 'components/m-header/m-header'
+  import Tab from 'components/tab/tab'
+  import Player from 'components/player/player'
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  export default {
+    components: {
+      MHeader,
+      Tab,
+      Player
+    },
+    methods: {
+      audioInit () {
+        let audio = this.$refs.player.$refs.audio
+        audio.play()
+        // audio.pause()
+      }
+    }
+  }
+</script>
